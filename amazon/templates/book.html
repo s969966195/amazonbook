@@ -1,0 +1,49 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}Book{% endblock %}
+
+{% block content %}
+<div class="book">
+    <div class="book-title">
+	    <h1>{{ book.title }}</h1>
+    </div>
+    <div class="author">
+	{% for author in book.author %}
+	    {{ author }}
+	{% endfor %}
+    </div>
+    <HR>
+    <div class="press">
+	{{ book.press }}
+    </div>
+    <HR>
+    <div class="ASIN">
+	{{ book.ASIN }}
+    </div>
+    <HR>
+    {% if book.ISBN %}
+        {{ book.ISBN }}
+	<HR>
+    {% endif %}
+    <div class="introduction">
+	{% for introduction in book.introduction %}
+	    {{ introduction }}
+	{% endfor %}
+    </div>
+    <HR>
+    {% if book.promotion %}
+        <h1>{{ book.promotion }}</h1>
+	<HR>
+    {% endif %}
+    {% if book.prime_paperback %}
+        {{ book.prime_paperback }}
+	<HR>
+    {% endif %}
+    {% if book.prime_ebook %}
+        {{ book.prime_ebook }}
+	<HR>
+    {% endif %}
+</div>
+{% endblock %}
+
+

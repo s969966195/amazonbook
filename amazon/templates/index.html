@@ -1,0 +1,32 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "_macros.html" as macros %}
+
+{% block title %}Amazon{% endblock %}
+
+{% block content %}
+<div>
+    {{ wtf.quick_form(form) }}
+</div>
+<ul class="books">
+    {% for book in books %}
+    <li class="book">
+        <div class="book-title">
+	    <a href="{{ url_for('.book',ASIN=book.ASIN) }}">
+	        {{ book.title }}
+	    </a>
+	</div>
+	{% for author in book.author %}
+	<div class="book-author">
+	    {{ author }}
+	</div>
+	{% endfor %}
+    </li>
+    {% endfor %}
+</ul>
+{% if pagination %}
+<div class="pagination">
+    {{ macros.pagination_widget(pagination,'.index') }}
+</div>
+{% endif %}
+{% endblock %}
